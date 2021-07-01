@@ -1,26 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Route, Switch, BrowserRouter} from 'react-router-dom';
+import { AuthWithState} from "./container/Auth";
+import {Profile} from "./container/Profile";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+export const App = () => (
+    <BrowserRouter>
+        <Switch>
+            <Route path='/auth' component={AuthWithState}  />
+            <Route path='/404'>404</Route>
+            <Route path='/' component={Profile} />
+        </Switch>
+    </BrowserRouter>
+)
